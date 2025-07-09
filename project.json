@@ -1,0 +1,38 @@
+{
+  "project": {
+    "name": "Creality K1 – Redefining Speed and Precision in 3D Printing",
+    "description": "An elegant single-page website showcasing the Creality K1 3D printer. Built for high-speed, high-precision printing with AI-powered features for modern creators.",
+    "version": "1.0.0",
+    "author": {
+      "name": "Akash Gupta",
+      "github": "https://github.com/saysky2",
+      "linkedin": "https://www.linkedin.com/in/saysky2"
+    },
+    "files": [
+      "index.html",
+      "creality_k1_image.png",
+      "Khwaja_Moinuddin_Chishti_Language_University_logo.png",
+      "README.md",
+      "project.json"
+    ],
+    "features": [
+      "Blazing fast print speeds",
+      "Precision shaping and compensation",
+      "AI camera and LiDAR tools",
+      "Preassembled and intuitive interface",
+      "Wide filament compatibility"
+    ],
+    "technologies": [
+      "HTML5",
+      "CSS3"
+    ],
+    "hosting": {
+      "recommended": [
+        "GitHub Pages",
+        "Netlify",
+        "Vercel"
+      ]
+    },
+    "license": "MIT"
+  }
+}
