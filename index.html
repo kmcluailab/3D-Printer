@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,60 +7,159 @@
   <title>Creality K1 - Speed and Precision 3D Printing</title>
   <link rel="icon" type="image/png" href="Khwaja_Moinuddin_Chishti_Language_University_logo.png" />
   <style>
+    :root {
+      --bg-color: #f5f7fa;
+      --text-color: #333;
+      --header-bg: #283593;
+      --main-bg: #fff;
+      --accent-color: #1a237e;
+      --border-color: #ddd;
+      --shadow-color: rgba(0,0,0,0.2);
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #1a1a1a;
+      --text-color: #e0e0e0;
+      --header-bg: #1e1e2e;
+      --main-bg: #2d2d2d;
+      --accent-color: #64b5f6;
+      --border-color: #444;
+      --shadow-color: rgba(0,0,0,0.5);
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f7fa;
+      background-color: var(--bg-color);
       margin: 0;
-      color: #333;
+      color: var(--text-color);
+      transition: all 0.3s ease;
     }
+
+    .controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+
+    .control-btn {
+      background-color: white;
+      color: black;
+      border: 2px solid #ccc;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .control-btn:hover {
+      background-color: #f5f5f5;
+      border-color: #aaa;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .language-select {
+      background-color: white;
+      color: black;
+      border: 2px solid #ccc;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
     header {
-      background-color: #283593;
+      background-color: var(--header-bg);
       color: white;
       padding: 20px 20px 20px 100px;
       text-align: center;
       position: relative;
       animation: slideInDown 1s ease;
     }
+
     header img.logo {
       position: absolute;
       top: 10px;
       left: 20px;
       height: 80px;
     }
+
     main {
       max-width: 1200px;
       margin: auto;
       padding: 2em;
-      background-color: #fff;
+      background-color: var(--main-bg);
       animation: fadeIn 1.5s ease-in;
     }
+
     h2 {
-      color: #1a237e;
+      color: var(--accent-color);
       margin-top: 40px;
     }
+
     ul {
       padding-left: 20px;
     }
+
     li {
       margin-bottom: 10px;
     }
+
     .image-animated {
       display: block;
       max-width: 90%;
       margin: 30px auto;
       border-radius: 10px;
-      border: 4px solid #ddd;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border: 4px solid var(--border-color);
+      box-shadow: 0 4px 12px var(--shadow-color);
       animation: fadeInImage 2s ease-in-out;
     }
+
+    .lang-hidden {
+      display: none;
+    }
+
+    footer {
+      background-color: var(--header-bg);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #64b5f6;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
     @keyframes fadeInImage {
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
+
     @keyframes slideInDown {
       from { transform: translateY(-100%); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -67,83 +167,247 @@
   </style>
 </head>
 <body>
+  <div class="controls">
+    <button class="control-btn" onclick="toggleTheme()">
+      🌙 Dark
+    </button>
+    <select class="language-select" onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="ur">اردو</option>
+    </select>
+  </div>
+
   <header>
     <img src="Khwaja_Moinuddin_Chishti_Language_University_logo.png" alt="University Logo" class="logo">
-    <h1>Creality K1 – Redefining Speed and Precision in 3D Printing</h1>
+    <h1 data-lang="en">Creality K1 – Redefining Speed and Precision in 3D Printing</h1>
+    <h1 data-lang="hi" class="lang-hidden">क्रिएलिटी K1 – 3D प्रिंटिंग में गति और सटीकता को नया आयाम</h1>
+    <h1 data-lang="ur" class="lang-hidden">کریالٹی K1 – 3D پرنٹنگ میں رفتار اور درستگی کو نئی تعریف</h1>
   </header>
+
   <main>
     <img src="creality_k1_image.png" alt="Creality K1 3D Printer" class="image-animated">
 
     <section>
-      <h2>Overview</h2>
-      <p>The Creality K1 is a groundbreaking 3D printer engineered for unmatched speed and quality. With blazing fast performance, high precision, and intelligent features, it is ideal for hobbyists, professionals, and educators alike.</p>
+      <h2 data-lang="en">Overview</h2>
+      <h2 data-lang="hi" class="lang-hidden">अवलोकन</h2>
+      <h2 data-lang="ur" class="lang-hidden">جائزہ</h2>
+      
+      <p data-lang="en">The Creality K1 is a groundbreaking 3D printer engineered for unmatched speed and quality. With blazing fast performance, high precision, and intelligent features, it is ideal for hobbyists, professionals, and educators alike.</p>
+      <p data-lang="hi" class="lang-hidden">क्रिएलिटी K1 एक अभूतपूर्व 3D प्रिंटर है जो बेजोड़ गति और गुणवत्ता के लिए इंजीनियर किया गया है। तेज़ प्रदर्शन, उच्च सटीकता और बुद्धिमान सुविधाओं के साथ, यह शौकीनों, पेशेवरों और शिक्षकों के लिए आदर्श है।</p>
+      <p data-lang="ur" class="lang-hidden">کریالٹی K1 ایک انقلابی 3D پرنٹر ہے جو بے مثال رفتار اور معیار کے لیے ڈیزائن کیا گیا ہے۔ تیز رفتار کارکردگی، اعلیٰ درستگی، اور ذہین خصوصیات کے ساتھ، یہ شوقین، پیشہ ور اور تعلیمی ماہرین کے لیے مثالی ہے۔</p>
     </section>
 
     <section>
-      <h2>Speed Performance</h2>
-      <ul>
+      <h2 data-lang="en">Speed Performance</h2>
+      <h2 data-lang="hi" class="lang-hidden">गति प्रदर्शन</h2>
+      <h2 data-lang="ur" class="lang-hidden">رفتار کی کارکردگی</h2>
+      
+      <ul data-lang="en">
         <li>Print speed up to 600mm/s</li>
         <li>Acceleration up to 20000mm/s²</li>
         <li>CoreXY motion system for enhanced stability</li>
         <li>Reaches 90% of target speed in just 0.03 seconds</li>
       </ul>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>600mm/s तक की प्रिंट गति</li>
+        <li>20000mm/s² तक का त्वरण</li>
+        <li>बेहतर स्थिरता के लिए CoreXY मोशन सिस्टम</li>
+        <li>केवल 0.03 सेकंड में लक्ष्य गति का 90% प्राप्त करता है</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>600mm/s تک پرنٹ کی رفتار</li>
+        <li>20000mm/s² تک کی رفتار</li>
+        <li>بہتر استحکام کے لیے CoreXY موشن سسٹم</li>
+        <li>صرف 0.03 سیکنڈ میں ہدف کی رفتار کا 90% حاصل کرتا ہے</li>
+      </ul>
     </section>
 
     <section>
-      <h2>Precision and Print Quality</h2>
-      <ul>
+      <h2 data-lang="en">Precision and Print Quality</h2>
+      <h2 data-lang="hi" class="lang-hidden">सटीकता और प्रिंट गुणवत्ता</h2>
+      <h2 data-lang="ur" class="lang-hidden">درستگی اور پرنٹ کوالٹی</h2>
+      
+      <ul data-lang="en">
         <li>Advanced Input Shaping reduces vibration</li>
         <li>G-sensor compensation adjusts for resonance</li>
         <li>Maintains accuracy even at top speeds</li>
       </ul>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>उन्नत इनपुट शेपिंग कंपन को कम करता है</li>
+        <li>G-सेंसर क्षतिपूर्ति गूंज के लिए समायोजित करती है</li>
+        <li>शीर्ष गति पर भी सटीकता बनाए रखता है</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>جدید انپٹ شیپنگ کمپن کو کم کرتا ہے</li>
+        <li>G-سینسر کمپنسیشن گونج کے لیے ایڈجسٹ کرتا ہے</li>
+        <li>تیز رفتار پر بھی درستگی برقرار رکھتا ہے</li>
+      </ul>
     </section>
 
     <section>
-      <h2>Smart & Intelligent Features</h2>
-      <ul>
+      <h2 data-lang="en">Smart & Intelligent Features</h2>
+      <h2 data-lang="hi" class="lang-hidden">स्मार्ट और बुद्धिमान सुविधाएं</h2>
+      <h2 data-lang="ur" class="lang-hidden">اسمارٹ اور ذہین خصوصیات</h2>
+      
+      <ul data-lang="en">
         <li>AI camera for monitoring and time-lapse</li>
         <li>AI LiDAR scans first layer for accuracy</li>
         <li>One-tap self-testing diagnostics</li>
       </ul>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>निगरानी और टाइम-लैप्स के लिए AI कैमरा</li>
+        <li>सटीकता के लिए AI LiDAR पहली परत को स्कैन करता है</li>
+        <li>वन-टैप सेल्फ-टेस्टिंग डायग्नोस्टिक्स</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>نگرانی اور ٹائم لیپس کے لیے AI کیمرہ</li>
+        <li>درستگی کے لیے AI LiDAR پہلی تہ کو اسکین کرتا ہے</li>
+        <li>ون ٹیپ سیلف ٹیسٹنگ ڈائیگنوسٹکس</li>
+      </ul>
     </section>
 
     <section>
-      <h2>User-Friendly Design</h2>
-      <ul>
+      <h2 data-lang="en">User-Friendly Design</h2>
+      <h2 data-lang="hi" class="lang-hidden">उपयोगकर्ता-अनुकूल डिज़ाइन</h2>
+      <h2 data-lang="ur" class="lang-hidden">صارف دوست ڈیزائن</h2>
+      
+      <ul data-lang="en">
         <li>Ready to use out of the box</li>
         <li>Enclosed chamber for consistent temps</li>
         <li>4.3-inch touchscreen for intuitive control</li>
       </ul>
-    </section>
-
-    <section>
-      <h2>Material Compatibility</h2>
-      <ul>
-        <li>Supports PLA, PETG, ABS, TPU, PA, ASA</li>
-        <li>High-flow hotend ensures consistent extrusion</li>
-        <li>Optimized cooling for material diversity</li>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>बॉक्स से बाहर निकालकर तुरंत उपयोग के लिए तैयार</li>
+        <li>स्थिर तापमान के लिए बंद चैंबर</li>
+        <li>सहज नियंत्रण के लिए 4.3-इंच टचस्क्रीन</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>ڈبے سے نکالتے ہی استعمال کے لیے تیار</li>
+        <li>مستحکم درجہ حرارت کے لیے بند چیمبر</li>
+        <li>آسان کنٹرول کے لیے 4.3 انچ ٹچ اسکرین</li>
       </ul>
     </section>
 
     <section>
-      <h2>Who Should Use It?</h2>
-      <ul>
+      <h2 data-lang="en">Material Compatibility</h2>
+      <h2 data-lang="hi" class="lang-hidden">सामग्री संगतता</h2>
+      <h2 data-lang="ur" class="lang-hidden">مواد کی مطابقت</h2>
+      
+      <ul data-lang="en">
+        <li>Supports PLA, PETG, ABS, TPU, PA, ASA</li>
+        <li>High-flow hotend ensures consistent extrusion</li>
+        <li>Optimized cooling for material diversity</li>
+      </ul>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>PLA, PETG, ABS, TPU, PA, ASA का समर्थन करता है</li>
+        <li>हाई-फ्लो हॉटएंड निरंतर एक्सट्रूजन सुनिश्चित करता है</li>
+        <li>सामग्री विविधता के लिए अनुकूलित कूलिंग</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>PLA, PETG, ABS, TPU, PA, ASA کو سپورٹ کرتا ہے</li>
+        <li>ہائی فلو ہاٹ اینڈ مستحکم ایکسٹروژن کو یقینی بناتا ہے</li>
+        <li>مواد کی تنوع کے لیے بہتر کولنگ</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 data-lang="en">Who Should Use It?</h2>
+      <h2 data-lang="hi" class="lang-hidden">इसका उपयोग कौन करे?</h2>
+      <h2 data-lang="ur" class="lang-hidden">اسے کون استعمال کرے؟</h2>
+      
+      <ul data-lang="en">
         <li>Hobbyists: Great for custom projects</li>
         <li>Designers: Rapid prototyping capability</li>
         <li>Engineers: Functional part development</li>
         <li>Educators: Perfect for classroom demos</li>
       </ul>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>शौकीन: कस्टम प्रोजेक्ट्स के लिए बेहतरीन</li>
+        <li>डिज़ाइनर: तेज़ प्रोटोटाइपिंग क्षमता</li>
+        <li>इंजीनियर: कार्यात्मक भाग विकास</li>
+        <li>शिक्षक: कक्षा प्रदर्शन के लिए परफेक्ट</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>شوقین: کسٹم پروجیکٹس کے لیے بہترین</li>
+        <li>ڈیزائنرز: تیز پروٹوٹائپنگ صلاحیت</li>
+        <li>انجینئرز: فنکشنل پارٹ ڈیولپمنٹ</li>
+        <li>اساتذہ: کلاس روم ڈیمو کے لیے بہترین</li>
+      </ul>
     </section>
 
     <section>
-      <h2>Key Takeaways</h2>
-      <ul>
+      <h2 data-lang="en">Key Takeaways</h2>
+      <h2 data-lang="hi" class="lang-hidden">मुख्य बातें</h2>
+      <h2 data-lang="ur" class="lang-hidden">اہم نکات</h2>
+      
+      <ul data-lang="en">
         <li>⚡ Speed</li>
         <li>🎯 Precision</li>
         <li>🧠 Intelligence</li>
         <li>👍 Usability</li>
       </ul>
+      <ul data-lang="hi" class="lang-hidden">
+        <li>⚡ गति</li>
+        <li>🎯 सटीकता</li>
+        <li>🧠 बुद्धिमत्ता</li>
+        <li>👍 उपयोगिता</li>
+      </ul>
+      <ul data-lang="ur" class="lang-hidden">
+        <li>⚡ رفتار</li>
+        <li>🎯 درستگی</li>
+        <li>🧠 ذہانت</li>
+        <li>👍 استعمال میں آسانی</li>
+      </ul>
     </section>
   </main>
+
+    <footer>
+    <p data-lang="en">
+      Developer: Akash Gupta | 
+      <a href="https://www.linkedin.com/in/saysky2" target="_blank">LinkedIn</a> | 
+      <a href="https://github.com/saysky2" target="_blank">GitHub</a>
+    </p>
+    <p data-lang="en">Under the Supervision of <strong>Dr. Shan E Fatima</strong></p>
+    <p data-lang="hi" class="lang-hidden">
+      डेवलपर: आकाश गुप्ता | 
+      <a href="https://www.linkedin.com/in/saysky2" target="_blank">LinkedIn</a> | 
+      <a href="https://github.com/saysky2" target="_blank">GitHub</a>
+    </p>
+    <p data-lang="hi" class="lang-hidden"><strong>डॉ. शान ई. फातिमा</strong> के पर्यवेक्षण में</p>
+    <p data-lang="ur" class="lang-hidden">
+      ڈیولپر: آکاش گپتا | 
+      <a href="https://www.linkedin.com/in/saysky2" target="_blank">LinkedIn</a> | 
+      <a href="https://github.com/saysky2" target="_blank">GitHub</a>
+    </p>
+    <p data-lang="ur" class="lang-hidden"><strong>ڈاکٹر شان ای فاطمہ</strong> کی نگرانی میں</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const btn = document.querySelector('.control-btn');
+      
+      if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        btn.innerHTML = '🌙 Dark';
+      } else {
+        body.setAttribute('data-theme', 'dark');
+        btn.innerHTML = '☀️ Light';
+      }
+    }
+
+    function changeLanguage(lang) {
+      // Hide all elements
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.add('lang-hidden');
+      });
+      
+      // Show elements for selected language
+      document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+        el.classList.remove('lang-hidden');
+      });
+    }
+  </script>
 </body>
 </html>
